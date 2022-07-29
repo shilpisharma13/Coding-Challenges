@@ -182,7 +182,7 @@ ul {
 
 .form {
   width: 90vw;
-  max-width: 400px;
+  max-width: 600px;
   background: var(--white);
   border-radius: var(--borderRadius);
   box-shadow: var(--shadow-2);
@@ -190,15 +190,16 @@ ul {
   margin: 3rem 0;
 }
 .form-label {
-  display: block;
+  display: inline;
   font-size: var(--small-text);
+  margin-right: 0.5rem;
   margin-bottom: 0.5rem;
   text-transform: capitalize;
   letter-spacing: var(--letterSpacing);
 }
 .form-input,
 .form-textarea {
-  width: 100%;
+  width: 60%;
   padding: 0.375rem 0.75rem;
   border-radius: var(--borderRadius);
   background: var(--backgroundColor);
@@ -292,4 +293,17 @@ ul {
 .product img {
   width: 200px;
   height: 150px;
+}
+
+div.form-search {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  height: 0;
+  overflow: hidden;
+}
+div.form-search.display {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  height: auto;
+  /* overflow: hidden; */
 }

@@ -5,6 +5,8 @@ import Programs from './pages/Programs'
 import Residents from './pages/Residents'
 import Error from './pages/Error'
 import SharedLayout from './pages/SharedLayout'
+import SingleResident from './pages/SingleResident'
+import AddResident from './pages/AddResident'
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
           <Route index element={<Home />} />
           <Route path='programs' element={<Programs />} />
           <Route path='residents' element={<Residents />} />
+          <Route path='addResident' element={<AddResident />} />
+          <Route path='residents/:residentID' element={<SingleResident />} />
           <Route path='*' element={<Error />} />
         </Route>
       </Routes>

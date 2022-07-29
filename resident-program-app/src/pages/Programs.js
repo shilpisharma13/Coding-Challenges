@@ -1,41 +1,25 @@
 import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import authFetch from '../axios/authFetch'
-import axios from 'axios'
-import ProgramsList from './ProgramsList'
+import { useFetch } from '../components/useFetch'
 
 const Programs = () => {
-  const [isLoading, setIsLoading] = useState(false)
-  const [programs, setPrograms] = useState([])
+  const { loading, programs } = useFetch()
+  const newPrograms = [...new Set(programs.map((program) => program.name))]
 
-  const fetchData = async () => {
-    try {
-      const programsResponse = await authFetch('/programs')
-      console.log(programsResponse.data)
-      setPrograms(programsResponse.data)
-      setIsLoading(false)
-    } catch (error) {
-      setIsLoading(true)
-      console.log(`💥💥💥 Error: ${error}`)
-    }
-  }
-
-  useEffect(() => {
-    fetchData()
-  }, [])
-
-  if (isLoading) {
-    return (
-      <>
-        <h2>Loading....</h2>
-      </>
-    )
+  if (loading) {
+    return <h2>Loading...</h2>
   } else {
     return (
-      <h2>
-        hello
-        {/* <ProgramsList programs={programs} /> */}
-      </h2>
+      <section className='section'>
+        <h4>Here is the list of Programs</h4>
+        <ul>
+          {newPrograms
+            .sort((a, b) => a.localeCompare(b))
+            .map((program, index) => {
+              return <li key={index}>{program}</li>
+            })}
+        </ul>
+      </section>
     )
   }
 }

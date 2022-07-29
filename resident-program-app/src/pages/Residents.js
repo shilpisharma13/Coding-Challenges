@@ -2,27 +2,13 @@ import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import authFetch from '../axios/authFetch'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
+import { useFetch } from '../components/useFetch'
 
 const Residents = () => {
-  const [isLoading, setIsLoading] = useState(false)
-  const [residents, setResidents] = useState([])
+  const { loading, residents } = useFetch()
 
-  const fetchData = async () => {
-    try {
-      const residentsResponse = await authFetch('/residents')
-      setResidents(residentsResponse.data)
-      setIsLoading(false)
-    } catch (error) {
-      setIsLoading(true)
-      console.log(`💥💥💥 Error: ${error}`)
-    }
-  }
-
-  useEffect(() => {
-    fetchData()
-  }, [])
-
-  if (isLoading) {
+  if (loading) {
     return (
       <>
         <h2>Loading....</h2>
@@ -31,10 +17,19 @@ const Residents = () => {
   } else {
     return (
       <section className='section'>
-        {residents.map((resident, index) => {
-          const { name } = resident
-          return <p key={index}>{name}</p>
-        })}
+        <h4>List of current Residents</h4>
+        <ul>
+          {residents
+            .sort((a, b) => a.firstName.localeCompare(b.firstName))
+            .map((resident) => {
+              const { id, name } = resident
+              return (
+                <li key={id}>
+                  <Link to={`/residents/${resident.id}`}>{name}</Link>
+                </li>
+              )
+            })}
+        </ul>
       </section>
     )
   }

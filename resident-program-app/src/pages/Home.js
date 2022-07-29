@@ -16,6 +16,12 @@ const Home = () => {
           Residents
         </Link>
       </div>
+      <br></br>
+      <div>
+        <Link to='/addResident' className='btn'>
+          Add New Resident
+        </Link>
+      </div>
     </section>
   )
 }
