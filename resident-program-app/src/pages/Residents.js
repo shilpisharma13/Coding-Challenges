@@ -11,7 +11,7 @@ const Residents = () => {
   if (loading) {
     return (
       <>
-        <h2>Loading....</h2>
+        <h2 className='section'>Loading....</h2>
       </>
     )
   } else {

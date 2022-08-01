@@ -10,7 +10,7 @@ const SingleResident = () => {
   // const { firstName, lastName, levelOfCare, room, id, ambulation } = resident
 
   if (loading) {
-    return <h2>Loading....</h2>
+    return <h2 className='section'>Loading....</h2>
   } else {
     return (
       <section className='section' key={resident?.id}>
@@ -22,7 +22,7 @@ const SingleResident = () => {
         <p>{`Ambulation: ${resident?.ambulation}`}</p>
 
         <Link to='/residents' className='btn'>
-          Back to List
+          Back to Residents List
         </Link>
       </section>
     )

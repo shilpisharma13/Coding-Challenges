@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Home = () => {
   return (
     <section className='section'>
-      <h2>Welcome, User</h2>
+      <h2>Welcome, Admin</h2>
       <div>
         <Link to='/programs' className='btn'>
           Programs
